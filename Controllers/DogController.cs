@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DogBreedAi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DogBreedAi.Controllers
 {
@@ -7,13 +8,59 @@ namespace DogBreedAi.Controllers
     public class DogController : Controller
     {
         [HttpGet]
-        public IActionResult Test()
+        public IActionResult GetAllDogs()
         {
-            return Ok(new
+            return Ok(new[]
             {
-                Breed = "Golden Retriever",
-                Description = "Friendly and intelligent"
+               new
+               {
+                    Id = 1,
+                    Breed = "Golden Retriever",
+                    Description = "Friendly and intelligent"
+                },
+
+                new
+                {
+                    Id = 2,
+                    Breed = "Labrador",
+                    Description = "Loyal and energetic"
+
+                }
             });
+
+
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetDog(int id)
+        {
+            if (id == 1)
+            {
+                return Ok(new
+                {
+                    Id = 1,
+                    Breed = "Golden Retriever",
+                    Description = "Friendly and intelligent"
+                });
+            }
+
+            if (id == 2)
+            {
+                return Ok(new
+                {
+                    Id = 2,
+                    Breed = "Labrador",
+                    Description = "Loyal and energetic"
+                });
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult CreateDog([FromBody] Dog dog)
+        {
+            return Ok(dog);
         }
     }
-}
+}  
