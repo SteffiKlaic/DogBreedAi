@@ -1,16 +1,20 @@
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   constructor(private http: HttpClient) {
   }
+
+  imageUrl: string | null = null;
+  uploadInfo: any = null;
 
   onFileSelected(event: Event) {
   const input = event.target as HTMLInputElement;
@@ -20,6 +24,8 @@ export class App {
     return;
   }
 
+  this.imageUrl = URL.createObjectURL(file);
+
   const formData = new FormData();
   formData.append('file', file);
 
@@ -28,6 +34,7 @@ export class App {
     formData
   ).subscribe(response => {
     console.log(response);
+    this.uploadInfo = response;
   });
 }
 }
