@@ -6,16 +6,26 @@ The application allows users to upload a dog image, automatically identify the d
 
 ## Project Status
 
-This project is currently in the planning and development phase.
+This project is currently in active development.
+
+The image upload workflow, image preview, ASP.NET Core backend, and Hugging Face integration have already been implemented.
+
+The currently integrated dog breed classification model is being evaluated and will likely be replaced with a more accurate alternative, as the prediction quality is not yet reliable enough for real-world usage.
+
+## Current Features
+
+* Upload a dog image
+* Image preview in the browser
+* AI-powered dog breed recognition using Hugging Face
+* Angular frontend connected to an ASP.NET Core Web API
 
 ## Planned Features
 
-* Upload a dog image
-* AI-powered dog breed recognition
+* Improved dog breed recognition model
 * Automatic breed description generation
 * Responsive user interface
 
-## Planned Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -32,11 +42,20 @@ This project is currently in the planning and development phase.
 ### AI Services
 
 * Hugging Face Inference API
-
   * Image Classification Model
   * Text Generation Model
 
-### Future Enhancements
+## Setup
+
+A Hugging Face API token is required to run the AI integration.
+
+Store the token using .NET User Secrets:
+
+```bash
+dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
+```
+
+## Future Enhancements
 
 * Entity Framework Core
 * SQL Server
@@ -44,4 +63,6 @@ This project is currently in the planning and development phase.
 * Analysis history
 * Favorites and saved results
 
+## Screenshot
 
+![DogBreedAI](DogBreed.jpg)
