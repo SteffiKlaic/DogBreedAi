@@ -63,4 +63,6 @@ dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
 * Analysis history
 * Favorites and saved results
 
+
+
 ![DogBreedAI](DogBreed.jpg)
