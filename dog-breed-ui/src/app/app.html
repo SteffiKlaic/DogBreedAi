@@ -9,7 +9,6 @@
 <img *ngIf="imageUrl" [src]="imageUrl" width="300">
 
 <div *ngIf="uploadInfo">
-  <p>Dateiname: {{ uploadInfo.fileName }}</p>
-  <p>Dateigröße: {{ uploadInfo.fileSize }}</p>
-  <p>Dateityp: {{ uploadInfo.contentType }}</p>
+  <p>Rasse: {{ uploadInfo[0].label }}</p>
+  <p>Sicherheit: {{ uploadInfo[0].score * 100 }} %</p>
 </div>

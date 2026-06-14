@@ -33,7 +33,6 @@ export class App {
     'http://localhost:5072/api/dogs/upload',
     formData
   ).subscribe(response => {
-    console.log(response);
     this.uploadInfo = response;
   });
 }
