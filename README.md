@@ -64,7 +64,4 @@ dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
 * Favorites and saved results
 
 
-
-<p align="center">
-  <img src="DogBreed.jpg" width="100%">
-</p>
+![DogBreedAI](DogBreed.jpg)
