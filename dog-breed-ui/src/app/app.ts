@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef)
+  {
   }
 
   imageUrl: string | null = null;
@@ -34,6 +36,7 @@ export class App {
     formData
   ).subscribe(response => {
     this.uploadInfo = response;
+    this.cdr.detectChanges();
   });
 }
 }

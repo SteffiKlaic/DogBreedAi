@@ -1,14 +1,19 @@
 <h1>Dog Breed AI</h1>
 
-<p>My first Angular project</p>
+<input #fileInput
+       type="file"
+       hidden
+       (change)="onFileSelected($event)">
 
-<button>Bild auswählen</button>
+<button (click)="fileInput.click()">
+  Choose Dog Image
+</button>
 
-<input type="file" (change)="onFileSelected($event)">
+<div class="result-container">
+  <img *ngIf="imageUrl" [src]="imageUrl" width="300">
 
-<img *ngIf="imageUrl" [src]="imageUrl" width="300">
-
-<div *ngIf="uploadInfo">
-  <p>Rasse: {{ uploadInfo[0].label }}</p>
-  <p>Sicherheit: {{ uploadInfo[0].score * 100 }} %</p>
+  <div *ngIf="uploadInfo">
+    <p>Breed: {{ uploadInfo[0].label }}</p>
+    <p>Confidence: {{ (uploadInfo[0].score * 100).toFixed(2) }} %</p>
+  </div>
 </div>
