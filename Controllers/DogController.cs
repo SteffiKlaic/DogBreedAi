@@ -1,6 +1,7 @@
 ﻿using DogBreedAi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.Json;
 
@@ -42,10 +43,22 @@ namespace DogBreedAi.Controllers
 
             var result = await response.Content.ReadAsStringAsync();
 
-            var description = await GenerateDescription("malinois");
-            
+            using var imageDocument = JsonDocument.Parse(result);
+
+            var breed = imageDocument.RootElement[0]
+                .GetProperty("label")
+                .GetString();
+
+            var score = imageDocument.RootElement[0]
+                .GetProperty("score")
+                .GetDouble();
+
+            var description = await GenerateDescription(breed);
+
             return Ok(new
             {
+                Breed = breed,
+                Confidence = score,
                 Description = description
             });
         }
@@ -90,9 +103,17 @@ namespace DogBreedAi.Controllers
                 "https://router.huggingface.co/v1/chat/completions", content);
 
             var result = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(result);
 
-            return result;
+            using var document = JsonDocument.Parse(result);
+
+            var description =
+                document.RootElement
+                    .GetProperty("choices")[0]
+                    .GetProperty("message")
+                    .GetProperty("content")
+                    .GetString();
+
+            return description;
         }
     }
 }

@@ -13,8 +13,9 @@
   <img *ngIf="imageUrl" [src]="imageUrl" width="300">
 
   <div *ngIf="uploadInfo">
-    <p>Breed: {{ uploadInfo[0].label }}</p>
-    <p>Confidence: {{ (uploadInfo[0].score * 100).toFixed(2) }} %</p>
-    <p>Description: {{ uploadInfo.description }}</p>
+    <p>Breed: {{uploadInfo.breed}} </p>
+    <p>Confidence: {{(uploadInfo.confidence * 100).toFixed(2)}} %</p>
+    <p>Description: {{ uploadInfo?.description }}</p>
   </div>
 </div>
+
