@@ -1,15 +1,18 @@
-<h1>Dog Breed AI</h1>
-
-<input #fileInput
-       type="file"
-       hidden
-       (change)="onFileSelected($event)">
-
-<button (click)="fileInput.click()">
-  Choose Dog Image
-</button>
 
 <div class="result-container">
+  <h1>Dog Breed AI</h1>
+  <p class="subtitle">Discover your dog's breed with AI technology</p>
+  <!--<img class="dog-image" src="assets/images/dog.svg" alt="">-->
+
+  <input #fileInput
+         type="file"
+         hidden
+         (change)="onFileSelected($event)">
+
+  <button (click)="fileInput.click()">
+    Choose Dog Image
+  </button>
+
   <img *ngIf="imageUrl" [src]="imageUrl" width="300">
 
   <div *ngIf="uploadInfo">
@@ -18,4 +21,5 @@
     <p>Description: {{ uploadInfo?.description }}</p>
   </div>
 </div>
+
 

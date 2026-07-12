@@ -43,7 +43,20 @@ namespace DogBreedAi.Controllers
 
             var result = await response.Content.ReadAsStringAsync();
 
+            Console.WriteLine(result);
+            Console.WriteLine(file.ContentType);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return BadRequest(result);
+            }
+
             using var imageDocument = JsonDocument.Parse(result);
+
+            if (imageDocument.RootElement.ValueKind != JsonValueKind.Array)
+            {
+                return BadRequest("The image model did not return a prediction array.");
+            }
 
             var breed = imageDocument.RootElement[0]
                 .GetProperty("label")
@@ -85,7 +98,7 @@ namespace DogBreedAi.Controllers
                 content = prompt
             }
         },
-                model = "mistralai/Mistral-7B-Instruct-v0.2:featherless-ai",
+                model = "zai-org/GLM-5.2:together:fastest",
                 stream = false
             };
 
@@ -98,17 +111,38 @@ namespace DogBreedAi.Controllers
                     Encoding.UTF8,
                     "application/json");
 
-
+            Console.WriteLine(json);
             var response = await httpClient.PostAsync(
                 "https://router.huggingface.co/v1/chat/completions", content);
 
             var result = await response.Content.ReadAsStringAsync();
 
+
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine(response.StatusCode);
+                Console.WriteLine((int)response.StatusCode);
+                Console.WriteLine(result);
+                return "The description service is currently unavailable.";
+             
+            }
+
+
             using var document = JsonDocument.Parse(result);
 
+            if (document.RootElement.ValueKind != JsonValueKind.Object)
+            {
+                return "The model did not return a valid response.";
+            }
+
+            if (!document.RootElement.TryGetProperty("choices", out var choices))
+            {
+                return "The model did not return a valid response.";
+            }
+
+
             var description =
-                document.RootElement
-                    .GetProperty("choices")[0]
+                choices[0]
                     .GetProperty("message")
                     .GetProperty("content")
                     .GetString();
