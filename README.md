@@ -18,10 +18,6 @@ The image upload workflow, image preview, ASP.NET Core backend, and Hugging Face
 * Automatic breed description generation using Hugging Face
 * Angular frontend connected to an ASP.NET Core Web API
 
-## Planned Features
-
-* Responsive user interface
-
 ## Tech Stack
 
 ### Frontend
@@ -51,14 +47,5 @@ Store the token using .NET User Secrets:
 ```bash
 dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
 ```
-
-## Future Enhancements
-
-* Entity Framework Core
-* SQL Server
-* User accounts
-* Analysis history
-* Favorites and saved results
-
 
 ![DogBreedAI](DogBreed.jpg)
