@@ -1,27 +1,19 @@
 # DogBreedAI
 
-DogBreedAI is a personal learning project that combines modern web development with AI-powered services.
+### AI-powered dog breed recognition and description
 
-The application allows users to upload a dog image, automatically identify the dog breed using an AI image classification model, and generate a short description of the breed using a language model.
+<img width="100%" alt="Animation" src="https://github.com/user-attachments/assets/4bd6a19e-2e42-4ad6-953d-7b98062a8e03" />
 
-## Project Status
+DogBreedAI is a web application that identifies dog breeds from uploaded images using an AI image classification model and automatically generates a short breed description using a language model.
 
-This project is currently in active development.
-
-The image upload workflow, image preview, ASP.NET Core backend, and Hugging Face integration have already been implemented.
-
-## Current Features
+## Features
 
 * Upload a dog image
 * Image preview in the browser
 * AI-powered dog breed recognition using Hugging Face
 * Automatic breed description generation using Hugging Face
 * Angular frontend connected to an ASP.NET Core Web API
-
-## Planned Features
-
-* Responsive user interface
-
+  
 ## Tech Stack
 
 ### Frontend
@@ -52,12 +44,4 @@ Store the token using .NET User Secrets:
 dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
 ```
 
-## Future Enhancements
-
-* Entity Framework Core
-* SQL Server
-* User accounts
-* Analysis history
-* Favorites and saved results
-
-<img width="100%" alt="Animation" src="https://github.com/user-attachments/assets/4bd6a19e-2e42-4ad6-953d-7b98062a8e03" />
+![DogBreedAI](DogBreed.jpg)
