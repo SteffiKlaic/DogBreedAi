@@ -60,7 +60,4 @@ dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
 * Analysis history
 * Favorites and saved results
 
-
-![DogBreedAI](DogBreed.jpg)
-
 <img width="100%" alt="Animation" src="https://github.com/user-attachments/assets/4bd6a19e-2e42-4ad6-953d-7b98062a8e03" />
