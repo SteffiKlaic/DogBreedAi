@@ -44,4 +44,4 @@ Store the token using .NET User Secrets:
 dotnet user-secrets set "HuggingFace:ApiToken" "YOUR_TOKEN"
 ```
 
-![DogBreedAI](DogBreed.jpg)
+![DogBreedAI](DogBreed.png)
